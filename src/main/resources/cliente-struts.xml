@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+
+  <package name="cliente" namespace="/cliente" extends="struts-default,json-default">
+		<action name="index" class="clienteAction" method="index">
+        	<result name="success">/pages/altaCliente.jsp</result>
+    	</action>
+    
+    	<action name="altaCliente" class="clienteAction" method="save">
+    		<result name="error">/pages/errorSaveEvento.jsp</result>
+    		<result name="success">/pages/successSaveEvento.jsp</result>
+    	</action>
+    	
+    	<action name="getCitiesByState" class="clienteAction" method="getCitiesByState">
+       	   <result  type="json" ><param name="root">lstCities</param></result>
+      </action>
+      
+      <action name="loadStates" class="clienteAction" method="loadStates">
+       	   <result type="json" ><param name="root">states</param></result>
+      </action>
+    	
+    	
+    	<action name="entrarCliente" class="clienteAction" method="entrarCliente">
+    			<result name="login">/pages/firmaSesionCliente.jsp</result>
+    		<result name="no_existe">/pages/no_existe_cliente.jsp</result>
+    		<result name="necesita_ser_activado">/pages/cliente_noactivado.jsp</result>
+    		<!--  <result name="success">/pages/panel_cliente.jsp</result>-->
+    		
+    		   <!--  <result name="success" type="redirecAction">
+        			<param name="actionName">index</param>
+        			<param name="namespace">/evento</param>
+        			<param name="evento.cliente.id">${cliente.id}</param>
+    			</result>-->
+    	</action>
+	</package>
+</struts>
