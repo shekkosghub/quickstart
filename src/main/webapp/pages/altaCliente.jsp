@@ -46,15 +46,7 @@ function ocultarEnMoral(){
 	/*$('#lblFamilyName').hide();
 	$('#familyName').hide();*/
 
-	var rows = $('table.someclass tr');
-	var black = rows.filter('.toHide');
-	black.hide();
-	
-	$('#lblLastName').hide();
-	$('#lastName').hide();
-
-	$('#lblBirthDate').hide();
-	$('#birthDate').hide();
+	$('#person').hide();
 	
 	/*$('#lastName').attr('style','visibility:hidden');
 	$('#lblBirthDate').attr('style','visibility:hidden');
@@ -63,18 +55,9 @@ function ocultarEnMoral(){
 }
 
 function mostrarEnPersona(){
-	var style =	$('#familyName').attr('style');
-
 	//if(style == 'visibility:hidden'){
 		//console.log("lo muestra pues estaba oculto");
-	$('#lblFamilyName').show();
-	$('#familyName').show();
-	
-	$('#lblLastName').show();
-	$('#lastName').show();
-
-	$('#lblBirthDate').show();
-	$('#birthDate').show();
+	$('#person').show();
 
 //	}else{
 	//	console.log("ya estaba visible");
@@ -100,17 +83,21 @@ function mostrarEnPersona(){
 	<tr>
 	<s:select list="personType" id="personType" label="Tipo de persona" name="cliente.personType.id"/>
 	</tr>
-	<tr id="trFamilyName" class="toHide">
-	<!--<s:label for="familyName" value="Apellido Paterno" id="lblFamilyName" labelposition="left" theme="simple" />-->
-	 <s:textfield name="cliente.apellidoPaterno" id="familyName" labelposition="left" label="weweww"/>
+	<tr>
+	<td colspan="2">
+	<table id="person">
+	<tr>
+	 <s:textfield name="cliente.apellidoPaterno" id="familyName" labelposition="left" label="Apellido Paterno"/>
 	</tr>
 		<tr>
-	<s:label  value="Apellido Materno" id="lblLastName" for="lastName" labelposition="left"/>	
-	<s:textfield name="cliente.apellidoMaterno" id="lastName" />
+
+	<s:textfield name="cliente.apellidoMaterno" id="lastName" label="Apellido Materno"/>
 	</tr>
 		<tr>
-	<s:label for="birthDate" value="Fesha de  cumple" id="lblBirthDate"/>	
-	<s:textfield name="cliente.birthDate" id="birthDate" />
+	<s:textfield name="cliente.birthDate" id="birthDate" label="Fecha de Nacimiento"/>
+	</tr>
+	</table>
+	</td>
 	</tr>
 	<tr>
 			<s:select id="state" list="states" label="Estados" name="idstate"/>
