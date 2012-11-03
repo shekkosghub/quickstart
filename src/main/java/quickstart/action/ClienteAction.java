@@ -39,6 +39,7 @@ public class ClienteAction implements Preparable {
 	private Map<String,String> cities = new HashMap<String,String>();
 	private Map<Integer,String> states = new HashMap<Integer,String>();
 	private List<City> lstCities = new ArrayList<City>();
+	private Address address = new Address();
 	
 	
 	public ClienteAction(ClienteService service,PersonTypeService personTypeService,StateService stateService,CityService cityService) {
@@ -125,10 +126,8 @@ public class ClienteAction implements Preparable {
 		String res = Action.SUCCESS;
 		try{
 			log.info("Iniciando el guardado del cliente con una direccion");
-			log.info("Ciudad "+this.idcity);
-			Address address = new Address();
-			address.setCity(this.cityService.findById(idcity));
-			address.setStreetAndNumber("prueba");
+			log.info("Ciudad "+this.address.getCity().getId());
+			address.setCity(this.cityService.findById(this.address.getCity().getId()));
 			address.setClient(cliente);
 			this.cliente.getAddress().add(address);
 			this.service.persist(cliente);
@@ -237,6 +236,16 @@ public class ClienteAction implements Preparable {
 
 	public void setLstCities(List<City> lstCities) {
 		this.lstCities = lstCities;
+	}
+
+
+	public Address getAddress() {
+		return address;
+	}
+
+
+	public void setAddress(Address address) {
+		this.address = address;
 	}
 	
 	

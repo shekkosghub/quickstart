@@ -16,15 +16,11 @@ String ctx = request.getContextPath();
     <script src="<%=ctx%>/js/jquery-ui-1.9.0.custom/js/jquery-1.8.2.js"></script>
     <script src="<%=ctx%>/js/jquery-ui-1.9.0.custom/js/jquery-ui-1.9.0.custom.min.js"></script>
         <script src="<%=ctx%>/js/jquery-ui-1.9.0.custom/ui/i18n/jquery.ui.datepicker-es.js"></script>
-        
-<!--      <script>
-    $(function() {
-        $( "#birthDate" ).datepicker($.datepicker.regional['es']);
-    });
-    </script>-->
-    
 <script>
 $(function(){
+
+	$( "#birthDate" ).datepicker($.datepicker.regional['es']);
+	
   $("select#state").change(function(){
     $.getJSON("getCitiesByState.action",{idstate: $(this).val(), ajax: 'true'}, function(j){
       var options = '';
@@ -64,12 +60,24 @@ $(function(){
 		<tr>
 	<s:textfield name="cliente.birthDate" id="birthDate" label="Fecha de nacimiento"/>
 	</tr>
-		<tr>
+	
+	<tr>
 			<s:select id="state" list="states" label="Estados" name="idstate"/>
 	</tr>
 		<tr>
-				<s:select id="city" list="cities" label="Ciudades" name="idcity"/>	
+				<s:select id="city" list="cities" label="Ciudades" name="address.city.id"/>	
 	</tr>
+	<tr>
+		<s:textfield name="address.streetAndNumber" label="Calle y Número"/>
+	</tr>
+	<tr>
+		<s:textfield name="address.suburb" label="Colonia"/>
+	</tr>
+	<tr>
+		<s:textfield name="address.zipCode" label="Codigo postal"/>
+	</tr>
+	
+		
 
 
 	<tr><s:submit value="Aceptar"/></tr>
