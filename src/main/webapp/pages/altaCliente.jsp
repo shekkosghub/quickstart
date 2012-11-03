@@ -43,26 +43,26 @@ $(function(){
 })
 function ocultarEnMoral(){
 
-	/*$('#lblFamilyName').hide();
-	$('#familyName').hide();*/
+	$('#lblfamilyName').hide();
+	$('#familyName').hide();
 
-	$('#person').hide();
+	$('#lbllastName').hide();
+	$('#lastName').hide();
 	
-	/*$('#lastName').attr('style','visibility:hidden');
-	$('#lblBirthDate').attr('style','visibility:hidden');
-	$('#familyName').attr('style','visibility:hidden');
-	$('#birthDate').attr('style','visibility:hidden');*/
+	$('#lblbirthDate').hide();
+	$('#birthDate').hide();
 }
 
 function mostrarEnPersona(){
-	//if(style == 'visibility:hidden'){
-		//console.log("lo muestra pues estaba oculto");
-	$('#person').show();
 
-//	}else{
-	//	console.log("ya estaba visible");
-		//}
+	$('#lblfamilyName').show();
+	$('#familyName').show();
 
+	$('#lbllastName').show();
+	$('#lastName').show();
+	
+	$('#lblbirthDate').show();
+	$('#birthDate').show();
 }
 </script>
 </head>
@@ -84,23 +84,21 @@ function mostrarEnPersona(){
 	<s:select list="personType" id="personType" label="Tipo de persona" name="cliente.personType.id"/>
 	</tr>
 	<tr>
-	<td colspan="2">
-	<table id="person">
-	<tr>
-	 <s:textfield name="cliente.apellidoPaterno" id="familyName" labelposition="left" label="Apellido Paterno"/>
+		<td><s:label for="familyName" id="lblfamilyName" value="Apellido paterno:" theme="simple"/></td>
+		<td><s:textfield  name="cliente.apellidoPaterno" id="familyName" theme="simple"/></td>
 	</tr>
-		<tr>
 
-	<s:textfield name="cliente.apellidoMaterno" id="lastName" label="Apellido Materno"/>
+	<tr>
+		<td><s:label for="lastName" value="Apellido materno:" id="lbllastName" theme="simple"/></td>
+		<td><s:textfield name="cliente.apellidoMaterno" id="lastName" theme="simple"/></td>
 	</tr>
-		<tr>
-	<s:textfield name="cliente.birthDate" id="birthDate" label="Fecha de Nacimiento"/>
-	</tr>
-	</table>
-	</td>
+	
+	<tr>
+		<td><s:label for="birthDate" id="lblbirthDate" value="Fecha de nacimiento:" theme="simple"/></td>
+		<td><s:textfield name="cliente.birthDate" id="birthDate" theme="simple"/></td>
 	</tr>
 	<tr>
-			<s:select id="state" list="states" label="Estados" name="idstate"/>
+		<s:select id="state" list="states" label="Estados" name="idstate"/>
 	</tr>
 		<tr>
 				<s:select id="city" list="cities" label="Ciudades" name="address.city.id"/>	
@@ -114,10 +112,6 @@ function mostrarEnPersona(){
 	<tr>
 		<s:textfield name="address.zipCode" label="Codigo postal"/>
 	</tr>
-	
-		
-
-
 	<tr><s:submit value="Aceptar"/></tr>
 	</table>
 	</s:form>
