@@ -20,6 +20,15 @@ String ctx = request.getContextPath();
 $(function(){
 
 	$( "#birthDate" ).datepicker($.datepicker.regional['es']);
+
+	$("#personType").change(function(){
+		console.log($(this).val());
+		if($(this).val() == 'I'){
+			ocultarEnMoral();
+		}else{
+			mostrarEnPersona();
+			}	
+	})
 	
   $("select#state").change(function(){
     $.getJSON("getCitiesByState.action",{idstate: $(this).val(), ajax: 'true'}, function(j){
@@ -32,6 +41,46 @@ $(function(){
     })
   })
 })
+function ocultarEnMoral(){
+
+	/*$('#lblFamilyName').hide();
+	$('#familyName').hide();*/
+
+	var rows = $('table.someclass tr');
+	var black = rows.filter('.toHide');
+	black.hide();
+	
+	$('#lblLastName').hide();
+	$('#lastName').hide();
+
+	$('#lblBirthDate').hide();
+	$('#birthDate').hide();
+	
+	/*$('#lastName').attr('style','visibility:hidden');
+	$('#lblBirthDate').attr('style','visibility:hidden');
+	$('#familyName').attr('style','visibility:hidden');
+	$('#birthDate').attr('style','visibility:hidden');*/
+}
+
+function mostrarEnPersona(){
+	var style =	$('#familyName').attr('style');
+
+	//if(style == 'visibility:hidden'){
+		//console.log("lo muestra pues estaba oculto");
+	$('#lblFamilyName').show();
+	$('#familyName').show();
+	
+	$('#lblLastName').show();
+	$('#lastName').show();
+
+	$('#lblBirthDate').show();
+	$('#birthDate').show();
+
+//	}else{
+	//	console.log("ya estaba visible");
+		//}
+
+}
 </script>
 </head>
 <body>
@@ -49,18 +98,20 @@ $(function(){
 	<s:password name="cliente.contrasenia" label="Contraseña"/>
 	</tr>
 	<tr>
-	<s:select list="personType" label="Tipo de persona" name="cliente.personType.id"/>
+	<s:select list="personType" id="personType" label="Tipo de persona" name="cliente.personType.id"/>
 	</tr>
-			<tr>
-	<s:textfield name="cliente.apellidoPaterno" label="Apellido Paterno"/>
-	</tr>
-		<tr>
-	<s:textfield name="cliente.apellidoMaterno" label="Apellido Materno"/>
+	<tr id="trFamilyName" class="toHide">
+	<!--<s:label for="familyName" value="Apellido Paterno" id="lblFamilyName" labelposition="left" theme="simple" />-->
+	 <s:textfield name="cliente.apellidoPaterno" id="familyName" labelposition="left" label="weweww"/>
 	</tr>
 		<tr>
-	<s:textfield name="cliente.birthDate" id="birthDate" label="Fecha de nacimiento"/>
+	<s:label  value="Apellido Materno" id="lblLastName" for="lastName" labelposition="left"/>	
+	<s:textfield name="cliente.apellidoMaterno" id="lastName" />
 	</tr>
-	
+		<tr>
+	<s:label for="birthDate" value="Fesha de  cumple" id="lblBirthDate"/>	
+	<s:textfield name="cliente.birthDate" id="birthDate" />
+	</tr>
 	<tr>
 			<s:select id="state" list="states" label="Estados" name="idstate"/>
 	</tr>
