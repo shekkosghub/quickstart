@@ -21,8 +21,13 @@ $(function(){
 			  url: '<%=ctx%>/auth/login.action',
 			  data: $('#loginForm').serialize(),
 			  success: function(data){
-				  $('#diverror').html(data);
+				  if(data == "<div>correo o contrase&ntilde;a incorrecta</div>")
+					  $('#diverror').html(data);
+				  else{
+					  $('#idclient').val(data);
+					  $('#redirect').submit();
 				  }
+				}
 
 			});
 	})
@@ -46,6 +51,9 @@ $(function(){
 <table>
 <tr><td><div id="diverror"></div></tr>
 </table>
+</s:form>
+<s:form action="panel" namespace="/controlClient" id="redirect">
+	<s:hidden name="idclient" id="idclient"/>
 </s:form>
 </body>
 </html>

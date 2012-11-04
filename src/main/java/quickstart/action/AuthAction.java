@@ -14,7 +14,7 @@ import quickstart.service.ClienteService;
 
 public class AuthAction implements ServletResponseAware{
 	private static Logger log = Logger.getLogger(AuthAction.class);
-	private Cliente client = null;
+	private Cliente client;
 	private ClienteService clientService;
 	private HttpServletResponse response;
 	
@@ -27,9 +27,10 @@ public class AuthAction implements ServletResponseAware{
 		String res = Action.SUCCESS;
 		
 		this.client = clientService.findByCorreo(client.getCorreo(), client.getContrasenia());
+		response.setContentType("text");
 		if(this.client == null){
 			log.error("No se encontro cliente");
-			 response.setContentType("text");
+			 
 		     try {
 				response.getWriter().print("<div>correo o contrase&ntilde;a incorrecta</div>");
 			} catch (IOException e) {
@@ -39,7 +40,15 @@ public class AuthAction implements ServletResponseAware{
 		     return null;
 		}else{
 			log.info("cliente id: "+this.client.getId());
-			log.info("redirecionando al panel de cliente");
+			log.info("redirecionando(ajax) al panel de cliente");
+			try {
+				response.getWriter().print(this.client.getId());
+				res = null;
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
 		}
 		
 		return res;

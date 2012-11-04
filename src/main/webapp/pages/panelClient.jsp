@@ -8,6 +8,9 @@
 <title>Panel de Control</title>
 </head>
 <body>
-	<s:label name="client.name" />
+<table>
+
+	<s:label name="client.nombre" />
+</table>	
 </body>
 </html>

@@ -13,7 +13,7 @@ public class PanelClientAction {
 	
 	private Cliente client;
 	private ClienteService clientService;
-	private Integer idclient = null;
+	private String idclient;
 
 	public PanelClientAction(ClienteService clientService) {
 		this.clientService = clientService;
@@ -26,7 +26,15 @@ public class PanelClientAction {
 	
 	public String execute(){
 		String res = Action.SUCCESS;
-		this.client = this.clientService.findById(idclient);
+		log.info("*********************");
+		log.info("*********************");
+		log.info("*********************");
+		log.info("**"+this.idclient+"**");
+		log.info("*********************");
+		log.info("*********************");
+		log.info("*********************");
+		
+		this.client = this.clientService.findById(Integer.valueOf(idclient));
 			log.info("logeado con cliente id: "+this.idclient);
 		return res;
 	}
@@ -39,15 +47,14 @@ public class PanelClientAction {
 		this.client = client;
 	}
 
-	public Integer getIdclient() {
+	public String getIdclient() {
 		return idclient;
 	}
 
-	public void setIdclient(Integer idclient) {
+	public void setIdclient(String idclient) {
 		this.idclient = idclient;
 	}
-	
-	
+
 	
 	
 }
