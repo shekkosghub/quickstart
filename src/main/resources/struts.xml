@@ -25,6 +25,8 @@
         
     </package>
     <include file="evento-struts.xml"></include>   
-    <include file="cliente-struts.xml"></include>   
+    <include file="cliente-struts.xml"></include>  
+    <include file="auth-struts.xml"></include>
+    <include file="panel-client-struts.xml"></include>   
     
 </struts>

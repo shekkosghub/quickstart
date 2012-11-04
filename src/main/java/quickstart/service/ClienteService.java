@@ -24,5 +24,6 @@ public class ClienteService extends GenericService<Cliente, Integer> {
 		}
 		return clientes.get(0);
 	}
+
 	
 }

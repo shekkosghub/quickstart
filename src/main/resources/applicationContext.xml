@@ -89,4 +89,15 @@
         <constructor-arg ref="stateService"/>
         <constructor-arg ref="cityService"/>
     </bean>
+    
+    <bean id="authAction" scope="prototype"
+        class="quickstart.action.AuthAction">
+        <constructor-arg ref="clienteService" />
+    </bean>
+    
+    <bean id="panelClientAction" scope="prototype"
+        class="quickstart.action.PanelClientAction">
+        <constructor-arg ref="clienteService" />
+        
+    </bean>
 </beans>
