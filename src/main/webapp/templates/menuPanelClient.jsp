@@ -4,9 +4,9 @@
 	<s:a href="addEvent">Nuevo Evento</s:a>
 </ul>
 <ul>
-	<a href="<s:url action="#"/>">Contact Us</a>
+	<a href="<s:url action="javascrip:void(0);"/>">Contact Us</a>
 </ul>
 <ul>
-	<a href="<s:url action="#"/>">Registration</a>
+	<a href="<s:url action="javascrip:void(0);"/>">Registration</a>
 </ul>
 </h4>
