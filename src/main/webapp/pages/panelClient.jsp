@@ -9,7 +9,6 @@
 </head>
 <body>
 <table>
-
 	<s:label name="client.nombre" />
 </table>	
 </body>

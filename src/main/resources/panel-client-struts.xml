@@ -5,6 +5,10 @@
 <struts>
 
   <package name="controlClient" namespace="/controlClient" extends="struts-default,json-default">
+  <!--  <result-types>
+			<result-type name="tiles"
+				class="org.apache.struts2.views.tiles.TilesResult" />
+	</result-types>-->
 	<action name="panel" class="panelClientAction" method="execute">
 		<result name="success">/pages/panelClient.jsp</result>
 	</action>	

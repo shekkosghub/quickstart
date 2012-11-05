@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+"-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+"http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+	<definition name="panelClientLayout" template="/layouts/panelClientLayout.jsp">
+		<put-attribute name="title" value="Panel de Control weeeee" />
+		<put-attribute name="header" value="/templates/headerPanelClient.jsp" />
+		<put-attribute name="menu" value="/templates/menuPanelClient.jsp" />
+		<put-attribute name="body" value="/templates/body.jsp" />
+		<put-attribute name="footer" value="/templates/footerPanelClient.jsp" />
+	</definition>
+
+	<definition name="panelClient" extends="panelClientLayout">
+		<put-attribute name="title" value="Bienvenido weee" />
+		<put-attribute name="body" value="/pages/panelClient.jsp" />
+	</definition>
+</tiles-definitions>
